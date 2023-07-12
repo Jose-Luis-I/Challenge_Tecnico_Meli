@@ -4,7 +4,7 @@ import pandas as pd
 
 class info_data():
     def __init__(self, pais: str = 'MLA'):
-        # La clase se debe inicializar con el id del pais que se quiera obtener información
+        """La clase se debe inicializar con el id del pais que se quiera obtener información"""
         self.con = requests.get('https://api.mercadolibre.com/sites')
         self.con_ans = self.con.json()
         self.dic_con = {el['id']: el['name'] for el in self.con_ans}
@@ -18,7 +18,7 @@ class info_data():
         self.url = f'https://api.mercadolibre.com/sites/{self.pais}/categories'
         self.cats = requests.get(self.url)
         self.cats_1 = self.cats.json()
-        # diccionario de id:categoria dentro del pais con el que se inicializa la clase
+        """diccionario de id:categoria dentro del pais con el que se inicializa la clase"""
         self.categorias = {int(el['id'].replace(
             self.pais, '')): el['name'] for el in self.cats_1}
         pass
