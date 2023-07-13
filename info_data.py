@@ -38,3 +38,9 @@ class info_data():
         """Devuelve un dataframe con los items de la categoria contenidos en el rango de offset de 0 a n"""
         ran = range(0, n, 50)
         return pd.concat([self.df_items(categoria_id, el) for el in ran], ignore_index=True)
+
+    def info_item(self, item_id: str, info: str = 'warranty'):
+        """Retorna la información requerida del producto seleccionado"""
+        url = f"https://api.mercadolibre.com/items/{item_id}#json"
+        ans = requests.get(url).json()
+        return ans[info]
