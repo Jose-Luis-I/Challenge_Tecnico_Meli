@@ -18,7 +18,7 @@ vars = ['id', 'title', 'condition',
         'original_price', 'sold_quantity', 'available_quantity',
         'accepts_mercadopago', 'tags',
         'garantia', 'id_seller', 'name_seller', 'fecha_registro', 'level_seller', 'status_seller', 'cancelados',
-        'neg_r', 'completados', 'pos_r', 'nrl_r', 'ciudad', 'region', 'logistic_type', 'precio', 'precio_base', 'cant_ini', 'nombre_garantia', 'n_garantia', 'und_garantia']
+        'neg_r', 'completados', 'pos_r', 'nrl_r', 'ciudad', 'region', 'logistic_type', 'precio', 'precio_base', 'cant_ini', 'nombre_garantia', 'n_garantia', 'unid_garantia']
 
 
 for n in range(len(info)):
