@@ -1,5 +1,8 @@
 import requests
 import pandas as pd
+from typing import List
+from ndicts import NestedDict
+import numpy as np
 
 
 class info_data():
@@ -39,8 +42,18 @@ class info_data():
         ran = range(0, n, 50)
         return pd.concat([self.df_items(categoria_id, el) for el in ran], ignore_index=True)
 
-    def info_item(self, item_id: str, info: str = 'warranty'):
-        """Retorna la información requerida del producto seleccionado"""
+    # def info_item(self, item_id: str, info: str = 'warranty'):
+    #     """Retorna la información requerida del producto seleccionado"""
+    #     url = f"https://api.mercadolibre.com/items/{item_id}#json"
+    #     ans = requests.get(url).json()
+    #     return ans[info]
+
+    def info_item(self, item_id: str, path: List):
         url = f"https://api.mercadolibre.com/items/{item_id}#json"
-        ans = requests.get(url).json()
-        return ans[info]
+        try:
+            ans = NestedDict(requests.get(url).json())
+            for el in range(len(path)):
+                ans = ans[path[el]]
+        except:
+            ans = np.NaN
+        return ans
