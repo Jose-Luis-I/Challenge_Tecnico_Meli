@@ -9,7 +9,9 @@ cat_el = [1747, 1039, 1168, 1743, 1051, 1648, 1144, 1276, 5726, 1000]
 info = []
 for cat in cat_el:
     for el in range(0, 500, 50):
-        info += k.items(cat, el)['results']
+        ans = k.items(cat, el)['results']
+        ans[0]['categoria'] = categorias[cat]
+        info += ans
 
 
 vars = ['id', 'title', 'condition',
@@ -18,7 +20,7 @@ vars = ['id', 'title', 'condition',
         'original_price', 'sold_quantity', 'available_quantity',
         'accepts_mercadopago', 'tags',
         'garantia', 'id_seller', 'name_seller', 'fecha_registro', 'level_seller', 'status_seller', 'cancelados',
-        'neg_r', 'completados', 'pos_r', 'nrl_r', 'ciudad', 'region', 'logistic_type', 'precio', 'precio_base', 'cant_ini', 'nombre_garantia', 'n_garantia', 'unid_garantia']
+        'neg_r', 'completados', 'pos_r', 'nrl_r', 'ciudad', 'region', 'logistic_type', 'precio', 'precio_base', 'cant_ini', 'nombre_garantia', 'n_garantia', 'unid_garantia', 'categoria']
 
 
 for n in range(len(info)):
