@@ -7,12 +7,14 @@ categorias = k.categorias
 cat_el = [1747, 1039, 1168, 1743, 1051, 1648, 1144, 1276, 5726, 1000]
 
 info = []
+c = pd.Timestamp.now()
 for cat in cat_el:
     for el in range(0, 500, 50):
         ans = k.items(cat, el)['results']
         ans[0]['categoria'] = categorias[cat]
         info += ans
-
+        print(str(el)+' '+str(cat))
+print(pd.Timestamp.now()-c)
 
 vars = ['id', 'title', 'condition',
         'listing_type_id',  'buying_mode',  'category_id',
@@ -22,7 +24,7 @@ vars = ['id', 'title', 'condition',
         'garantia', 'id_seller', 'name_seller', 'fecha_registro', 'level_seller', 'status_seller', 'cancelados',
         'neg_r', 'completados', 'pos_r', 'nrl_r', 'ciudad', 'region', 'logistic_type', 'precio', 'precio_base', 'cant_ini', 'nombre_garantia', 'n_garantia', 'unid_garantia', 'categoria']
 
-
+c = pd.Timestamp.now()
 for n in range(len(info)):
     info[n]['garnatia'] = k.info_item(info[n]['id'], ['warranty'])
     info[n]['id_seller'] = info[n]['seller']['id']
@@ -47,6 +49,9 @@ for n in range(len(info)):
         info[n]['id'], ['sale_terms', 0, 'value_struct', 'number'])
     info[n]['unid_garantia'] = k.info_item(
         info[n]['id'], ['sale_terms', 0, 'value_struct', 'unit'])
+    if n % 250 == 0:
+        print(n)
+print(pd.Timestamp.now()-c)
 
 
 final = [{x: y for x, y in el.items() if x in vars} for el in info]
