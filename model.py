@@ -58,8 +58,8 @@ px.scatter(df, x='title', y='price_med', template='simple_white',
            color='agglomerative', title='Agglomerative Productos vs Precio').write_image('Imagenes/Agglomerative.png')
 
 px.histogram(df, x='k_means', histnorm='percent',
-             template='simple_white', title='Histogram kMeans').write_image('Imagenes/Histograma_kMeans.png')
+             template='simple_white', title='Histogram kMeans', text_auto='.2f').write_image('Imagenes/Histograma_kMeans.png')
 px.histogram(df, x='affinity', histnorm='percent',
-             template='simple_white', title='Histogram Affinity').write_image('Imagenes/Histograma_Affinity.png')
+             template='simple_white', title='Histogram Affinity', text_auto='.2f').write_image('Imagenes/Histograma_Affinity.png')
 px.histogram(df, x='agglomerative', histnorm='percent',
-             template='simple_white', title='Histogram Agglomerative').write_image('Imagenes/Histograma_Agglomerative.png')
+             template='simple_white', title='Histogram Agglomerative', text_auto='.2f').write_image('Imagenes/Histograma_Agglomerative.png')
