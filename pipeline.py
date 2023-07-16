@@ -7,7 +7,7 @@ import numpy as np
 k = info_data('MCO')
 categorias = k.categorias
 
-cat_el = [1747]  # , 1039, 1168, 1743, 1051, 1648, 1144, 1276, 5726, 1000]
+cat_el = [1747, 1039, 1168, 1743, 1051, 1648, 1144, 1276, 5726, 1000]
 
 vars = ['id', 'title', 'condition',
         'listing_type_id',  'buying_mode',  'category_id',
