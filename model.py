@@ -48,6 +48,7 @@ metric_agglo = silhouette_score(dfp, ac_df)
 
 # ,'sold_quantity','antiguedad'
 df.groupby('agglomerative')[['title']].describe()
+df['agglomerative'] = df.agglomerative.astype(str)
 
 # Plots
 px.scatter(df, x='title', y='price_med', template='simple_white',
@@ -80,5 +81,6 @@ fig.write_image('Imagenes/scatter.png')
 fig = px.scatter(df, y='completados', x='antiguedad',
                  title='Agglomerative Sold Quantity vs Precio', template='simple_white', color='agglomerative')
 fig.update_layout(xaxis_range=[0, 5000])
+fig.update_layout(yaxis_range=[0, 50000])
 fig.show()
 fig.write_image('Imagenes/scatter_ant.png')
