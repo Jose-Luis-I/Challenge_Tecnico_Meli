@@ -46,6 +46,8 @@ df['agglomerative'] = ac_df
 
 metric_agglo = silhouette_score(dfp, ac_df)
 
+# ,'sold_quantity','antiguedad'
+df.groupby('agglomerative')[['title']].describe()
 
 # Plots
 px.scatter(df, x='title', y='price_med', template='simple_white',
@@ -63,3 +65,19 @@ px.histogram(df, x='affinity', histnorm='percent',
              template='simple_white', title='Histogram Affinity', text_auto='.2f').write_image('Imagenes/Histograma_Affinity.png')
 px.histogram(df, x='agglomerative', histnorm='percent',
              template='simple_white', title='Histogram Agglomerative', text_auto='.2f').write_image('Imagenes/Histograma_Agglomerative.png')
+
+fig = px.box(df, x='agglomerative', y='title',
+             title='Agglomerative # de Productos', template='simple_white')
+fig.update_layout(yaxis_range=[0, 75])
+fig.show()
+fig.write_image('Imagenes/box.png')
+
+fig = px.scatter(df, y='sold_quantity', x='precio_med',
+                 title='Agglomerative Sold Quantity vs Precio', template='simple_white', color='agglomerative')
+fig.show()
+fig.write_image('Imagenes/scatter.png')
+
+fig = px.scatter(df, y='neg_r', x='pos_r',
+                 title='Agglomerative Sold Quantity vs Precio', template='simple_white', color='agglomerative')
+fig.show()
+fig.write_image('Imagenes/scatter_rating.png')
