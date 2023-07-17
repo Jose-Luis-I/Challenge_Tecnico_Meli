@@ -77,7 +77,8 @@ fig = px.scatter(df, y='sold_quantity', x='precio_med',
 fig.show()
 fig.write_image('Imagenes/scatter.png')
 
-fig = px.scatter(df, y='neg_r', x='pos_r',
+fig = px.scatter(df, y='completados', x='antiguedad',
                  title='Agglomerative Sold Quantity vs Precio', template='simple_white', color='agglomerative')
+fig.update_layout(xaxis_range=[0, 5000])
 fig.show()
-fig.write_image('Imagenes/scatter_rating.png')
+fig.write_image('Imagenes/scatter_ant.png')
